@@ -1,3 +1,16 @@
-test('our first test', () => {
-  throw new Error('Something failed');
+const lib = require('../lib');
+
+test('absolute - should return a positive num if input is positive', () => {
+  const result = lib.absolute(1);
+  expect(result).toBe(1);
+});
+
+test('absolute - should return a positive num if input is negative', () => {
+  const result = lib.absolute(-1);
+  expect(result).toBe(1);
+});
+
+test('absolute - should return a 0 if input is 0', () => {
+  const result = lib.absolute(0);
+  expect(result).toBe(0);
 });
