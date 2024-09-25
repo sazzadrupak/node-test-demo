@@ -41,3 +41,20 @@ describe('getProduct', () => {
     expect(result).toHaveProperty('id', 1); // other property except id can be ignored
   });
 });
+
+describe('registerUser', () => {
+  it('should throw if username is falsy', () => {
+    // Falsy values in JS: Null, undefined, NaN, '', 0, false
+    [null, undefined, NaN, '', 0, false].forEach((a) => {
+      expect(() => {
+        lib.registerUser(a);
+      }).toThrow();
+    });
+  });
+
+  it('should return a user object if valid username is passed', () => {
+    const result = lib.registerUser('rupak');
+    expect(result).toMatchObject({ username: 'rupak' });
+    expect(result.id).toBeGreaterThan(0);
+  });
+});
